@@ -1,17 +1,16 @@
-// Импортируем Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// Твой конфиг Firebase
-const firebaseConfig = { 
-  apiKey: "AIzaSyDzugruZhNUhzNTxx5YhbPPEDCoa2thiBc", 
-  authDomain: "cs2t-1c50c.firebaseapp.com", 
-  databaseURL: "https://cs2t-1c50c-default-rtdb.europe-west1.firebasedatabase.app", // Ссылка на твою базу данных
-  projectId: "cs2t-1c50c", 
-  storageBucket: "cs2t-1c50c.firebasestorage.app", 
-  messagingSenderId: "630964872351", 
-  appId: "1:630964872351:web:0cc8c0ce1ec1367ab82eaa", 
-  measurementId: "G-2CZ1GQNYGD" 
+// ТВОИ ДАННЫЕ ИЗ ССЫЛКИ (Проект cs2t-1c50c)
+const firebaseConfig = {
+  apiKey: "AIzaSyDzugruZhNUhzNTxx5YhbPPEDCoa2thiBc",
+  authDomain: "cs2t-1c50c.firebaseapp.com",
+  // Исправленный URL (Европейский регион)
+  databaseURL: "https://cs2t-1c50c-default-rtdb.europe-west1.firebasedatabase.app", 
+  projectId: "cs2t-1c50c",
+  storageBucket: "cs2t-1c50c.firebasestorage.app",
+  messagingSenderId: "630964872351",
+  appId: "1:630964872351:web:0cc8c0ce1ec1367ab82eaa"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,7 +18,6 @@ const db = getDatabase(app);
 const DB_PATH = "tournament_data"; 
 const ADMIN_PASSWORD = "admin123";
 
-// Начальные данные
 const DEFAULT = {
   quarters: [
     { name: "Team 1", score: 0, time: "12:00" }, { name: "Team 2", score: 0 },
@@ -70,7 +68,7 @@ function renderAll(data){
   const setText = (id, text) => { if(el(id)) el(id).innerText = text; };
   const setVal = (id, val) => { if(el(id)) el(id).value = val; };
 
-  // Рендер зрителя
+  // Рендер страницы зрителя
   if(el("qt1")){ 
     for(let i=0; i<8; i++){
       setText(`qt${i+1}`, computedData.quarters[i].name || "-");
@@ -96,7 +94,7 @@ function renderAll(data){
     setText("champ", computedData.champion ? "🏆 Champion: " + computedData.champion : "");
   }
 
-  // Рендер админки
+  // Рендер страницы админа
   if(el("qteam1")){
     for(let i=0; i<8; i++){
       setVal(`qteam${i+1}`, computedData.quarters[i].name);
@@ -180,14 +178,12 @@ function importJSON(file){
     try{
       const parsed = JSON.parse(e.target.result);
       saveData(parsed); 
-    }catch(err){ alert("Помилка імпорту JSON"); }
+    }catch(err){ alert("Помилка імпорту"); }
   };
   reader.readAsText(file);
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  
-  // Слушаем облако Firebase
   const dbRef = ref(db, DB_PATH);
   onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
@@ -204,7 +200,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     document.getElementById("loginBtn").addEventListener("click", tryLogin);
     
     document.getElementById("resetBtn").addEventListener("click", ()=>{
-      if(confirm("Ви впевнені, що хочете видалити всі результати?")) resetToDefault();
+      if(confirm("Ви впевнені?")) resetToDefault();
     });
 
     document.getElementById("exportBtn").addEventListener("click", exportJSON);
