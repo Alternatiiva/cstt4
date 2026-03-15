@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ua">
+<head>
+  <meta charset="utf-8" />
+  <title>CS2 Tournament — Spectator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>CS2 Tournament — Bracket</h1>
+    <div class="note">Рахунок та час оновлюються автоматично</div>
+  </div>
+
+  <div class="container">
+    <div class="bracket">
+      
+      <div class="round">
+        <div class="match">
+          <div class="timebox top-left" id="qtime1"></div>
+          <div class="team"><span id="qt1"></span><span class="score" id="qs1"></span></div>
+          <div class="team"><span id="qt2"></span><span class="score" id="qs2"></span></div>
+        </div>
+        <div class="match">
+          <div class="timebox top-left" id="qtime2"></div>
+          <div class="team"><span id="qt3"></span><span class="score" id="qs3"></span></div>
+          <div class="team"><span id="qt4"></span><span class="score" id="qs4"></span></div>
+        </div>
+        <div class="match">
+          <div class="timebox top-left" id="qtime3"></div>
+          <div class="team"><span id="qt5"></span><span class="score" id="qs5"></span></div>
+          <div class="team"><span id="qt6"></span><span class="score" id="qs6"></span></div>
+        </div>
+        <div class="match">
+          <div class="timebox top-left" id="qtime4"></div>
+          <div class="team"><span id="qt7"></span><span class="score" id="qs7"></span></div>
+          <div class="team"><span id="qt8"></span><span class="score" id="qs8"></span></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="match">
+          <div class="timebox top-left" id="stime1"></div>
+          <div class="team"><span id="st1"></span><span class="score" id="ss1"></span></div>
+          <div class="team"><span id="st2"></span><span class="score" id="ss2"></span></div>
+        </div>
+        <div class="match">
+          <div class="timebox top-left" id="stime2"></div>
+          <div class="team"><span id="st3"></span><span class="score" id="ss3"></span></div>
+          <div class="team"><span id="st4"></span><span class="score" id="ss4"></span></div>
+        </div>
+      </div>
+
+      <div class="round final-round">
+        <div class="match">
+          <div class="timebox top-left" id="ftime"></div>
+          <div class="team"><span id="ft1"></span><span class="score" id="fs1"></span></div>
+          <div class="team"><span id="ft2"></span><span class="score" id="fs2"></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="champion" id="champ"></div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

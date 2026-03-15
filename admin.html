@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>CS2 Tournament — Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="admin">
+    <div class="admin-top">
+      <div>
+        <h2 style="margin:0 0 6px 0">Admin Panel (8 Teams)</h2>
+        <div class="note">Змінюйте назви команд, рахунок та час. Переможці проходять далі автоматично.</div>
+      </div>
+
+      <div class="login" style="align-items:flex-start;">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <input id="adminPw" type="password" placeholder="Пароль администратора" />
+          <button id="loginBtn" class="btn secondary">Войти</button>
+        </div>
+        <div id="badPw" style="display:none; color:#ffb4b4; font-size:13px; margin-top:6px;">Пароль не правильний</div>
+      </div>
+    </div>
+
+    <div id="adminPanel" style="display:none; margin-top:18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div style="min-width:240px">
+          <div style="font-size:13px; color:#cbd5e1; margin-bottom:6px;">Поточний чемпіон:</div>
+          <div id="championAdmin" style="font-weight:700; color:#ef4444; font-size:18px;">-</div>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button id="saveBtn" class="btn">Зберегти всі зміни</button>
+          <button id="resetBtn" class="btn secondary">Видалити все</button>
+          <button id="exportBtn" class="btn secondary">Експорт</button>
+          <input id="importFile" type="file" accept=".json" style="background:transparent; color:#fff; border-radius:6px; max-width: 200px;" />
+        </div>
+      </div>
+
+      <hr style="border:none; height:1px; background:rgba(255,255,255,0.03); margin:16px 0;" />
+      <div class="help">Заповніть назви команд 1/4 фіналу. У наступних раундах команди з'являться автоматично на основі рахунку.</div>
+
+      <h3 style="margin-top:18px; margin-bottom:6px; color:#cbd5e1;">1/4 Фіналу (Чвертьфінали)</h3>
+      <div class="grid" style="margin-top:8px;">
+        <div class="label">Команда</div><div class="label">Рахунок</div><div class="label">Час матчу</div>
+        <input id="qteam1" placeholder="Team 1" /> <input id="qscore1" type="number" min="0" /> <input id="qtime1" placeholder="12:00" />
+        <input id="qteam2" placeholder="Team 2" /> <input id="qscore2" type="number" min="0" /> <div class="note-small">(матч 1)</div>
+        <input id="qteam3" placeholder="Team 3" /> <input id="qscore3" type="number" min="0" /> <input id="qtime2" placeholder="13:00" />
+        <input id="qteam4" placeholder="Team 4" /> <input id="qscore4" type="number" min="0" /> <div class="note-small">(матч 2)</div>
+        <input id="qteam5" placeholder="Team 5" /> <input id="qscore5" type="number" min="0" /> <input id="qtime3" placeholder="14:00" />
+        <input id="qteam6" placeholder="Team 6" /> <input id="qscore6" type="number" min="0" /> <div class="note-small">(матч 3)</div>
+        <input id="qteam7" placeholder="Team 7" /> <input id="qscore7" type="number" min="0" /> <input id="qtime4" placeholder="15:00" />
+        <input id="qteam8" placeholder="Team 8" /> <input id="qscore8" type="number" min="0" /> <div class="note-small">(матч 4)</div>
+      </div>
+
+      <h3 style="margin-top:24px; margin-bottom:6px; color:#cbd5e1;">1/2 Фіналу (Півфінали)</h3>
+      <div class="grid" style="margin-top:8px;">
+        <div class="label">Команда (Авто)</div><div class="label">Рахунок</div><div class="label">Час матчу</div>
+        <div class="ro-team" id="sname1">-</div> <input id="sscore1" type="number" min="0" /> <input id="stime1" placeholder="18:00" />
+        <div class="ro-team" id="sname2">-</div> <input id="sscore2" type="number" min="0" /> <div class="note-small">(півфінал 1)</div>
+        <div class="ro-team" id="sname3">-</div> <input id="sscore3" type="number" min="0" /> <input id="stime2" placeholder="19:00" />
+        <div class="ro-team" id="sname4">-</div> <input id="sscore4" type="number" min="0" /> <div class="note-small">(півфінал 2)</div>
+      </div>
+
+      <h3 style="margin-top:24px; margin-bottom:6px; color:#cbd5e1;">Фінал</h3>
+      <div class="grid" style="margin-top:8px;">
+        <div class="label">Фіналісти (Авто)</div><div class="label">Рахунок</div><div class="label">Час фіналу</div>
+        <div class="ro-team" id="fname1">-</div> <input id="fscore1" type="number" min="0" /> <input id="ftime" placeholder="20:00" />
+        <div class="ro-team" id="fname2">-</div> <input id="fscore2" type="number" min="0" /> <div class="note-small"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
